@@ -1,5 +1,5 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { LOAD_TODO_LIST, RENDER_TODO_LIST } from '../actions';
+import { LOAD_TODO_LIST, RENDER_TODO_LIST, REMOVE_TODO_ITEM } from '../actions';
 
 export function* fetchToDoList() {
   const endpoint =
@@ -11,6 +11,11 @@ export function* fetchToDoList() {
 
 export function* loadToDoList() {
   yield takeEvery(LOAD_TODO_LIST, fetchToDoList);
+}
+
+export function* removeToDoItem(id) {
+  console.log(id);
+  yield put({ REMOVE_TODO_ITEM, id });
 }
 
 export default function* rootSaga() {
