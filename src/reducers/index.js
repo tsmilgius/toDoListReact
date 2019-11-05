@@ -29,9 +29,12 @@ export default function toDoApp(state = initialState, action) {
         toDoList: action.toDoList
       };
     case REMOVE_TODO_ITEM:
+      console.log(action, state);
       return {
-        ...state.filter(id => id !== action.id)
+        ...state,
+        toDoList: state.toDoList.filter(({ _id }) => _id !== action.id)
       };
+
     default:
       return state;
   }
